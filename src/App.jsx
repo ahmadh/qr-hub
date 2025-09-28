@@ -13,7 +13,7 @@ function App() {
   const qrData = [
     {
       id: 1,
-      title: 'Produk 1',
+      title: 'Pabrik Jakarta',
       qrImage: qrCode1,
       infoLink: `Nama produk: Produk A
 Masa berlaku: 23 Januari 2026
@@ -22,7 +22,7 @@ Alamat Pabrik: Jakarta`
     },
     {
       id: 2,
-      title: 'Produk 2',
+      title: 'Pabrik Bekasi',
       qrImage: qrCode2,
       infoLink: `Nama produk: Produk B
 Masa berlaku: 13 Januari 2027
@@ -31,7 +31,7 @@ Alamat Pabrik: Bekasi`
     },
     {
       id: 3,
-      title: 'Produk 3',
+      title: 'Pabrik Karawang',
       qrImage: qrCode3,
       infoLink: `Nama produk: Produk C
 Masa berlaku: 21 Januari 2027
