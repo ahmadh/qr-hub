@@ -33,10 +33,10 @@ Alamat Pabrik: Bekasi`
       id: 3,
       title: 'Produk 3',
       qrImage: qrCode3,
-      infoLink: `Nama produk: Produk B
-Masa berlaku: 13 Januari 2027
-Nama Pabrik: PT B
-Alamat Pabrik: Bekasi`
+      infoLink: `Nama produk: Produk C
+Masa berlaku: 21 Januari 2027
+Nama Pabrik: PT C
+Alamat Pabrik: Karawang`
     }
   ];
 
