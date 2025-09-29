@@ -3,9 +3,9 @@ import { useState } from 'react';
 
 // 1. Impor gambar QR Code Anda dari folder assets
 // Pastikan Anda sudah menempatkan file gambar QR di folder `src/assets`
-import qrCode1 from './assets/qr-code-1.png';
-import qrCode2 from './assets/qr-code-2.png';
-import qrCode3 from './assets/qr-code-3.png';
+import qrCode1 from './assets/Surabaya.png';
+import qrCode2 from './assets/Bekasi.png';
+import qrCode3 from './assets/Medan.png';
 
 function App() {
   const [modalContent, setModalContent] = useState(null);
@@ -13,30 +13,30 @@ function App() {
   const qrData = [
     {
       id: 1,
-      title: 'Pabrik Jakarta',
+      title: 'Pabrik Surabaya',
       qrImage: qrCode1,
-      infoLink: `Nama produk: Produk A
+      infoQR: `Nama produk: Produk A
 Masa berlaku: 23 Januari 2026
 Nama Pabrik: PT A
-Alamat Pabrik: Jakarta`
+Alamat Pabrik: Surabaya`
     },
     {
       id: 2,
       title: 'Pabrik Bekasi',
       qrImage: qrCode2,
-      infoLink: `Nama produk: Produk B
+      infoQR: `Nama produk: Produk B
 Masa berlaku: 13 Januari 2027
 Nama Pabrik: PT B
 Alamat Pabrik: Bekasi`
     },
     {
       id: 3,
-      title: 'Pabrik Karawang',
+      title: 'Pabrik Medan',
       qrImage: qrCode3,
-      infoLink: `Nama produk: Produk C
+      infoQR: `Nama produk: Produk C
 Masa berlaku: 21 Januari 2027
 Nama Pabrik: PT C
-Alamat Pabrik: Karawang`
+Alamat Pabrik: Medan`
     }
   ];
 
@@ -71,7 +71,7 @@ Alamat Pabrik: Karawang`
             
             {/* Tombol Lihat Info - dibuat hitam dan solid */}
             <button 
-              onClick={() => setModalContent(item.infoLink)}
+              onClick={() => setModalContent(item.infoQR)}
               className="info-button bg-gray-900 text-white font-medium py-3 px-8 rounded-lg hover:bg-gray-700 transition duration-150 shadow-md mb-2"
             >
               Lihat info
