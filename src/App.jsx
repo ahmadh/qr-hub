@@ -15,27 +15,27 @@ function App() {
       id: 1,
       title: 'Pabrik Surabaya',
       qrImage: qrCode1,
-      infoQR: `Nama produk: Produk A
-Masa berlaku: 23 Januari 2026
-Nama Pabrik: PT A
+      infoQR: `Nama produk: Produk A <br>
+Masa berlaku: 23 Januari 2026 <br>
+Nama Pabrik: PT A <br>
 Alamat Pabrik: Surabaya`
     },
     {
       id: 2,
       title: 'Pabrik Bekasi',
       qrImage: qrCode2,
-      infoQR: `Nama produk: Produk B
-Masa berlaku: 13 Januari 2027
-Nama Pabrik: PT B
+      infoQR: `Nama produk: Produk B <br>
+Masa berlaku: 13 Januari 2027 <br>
+Nama Pabrik: PT B <br>
 Alamat Pabrik: Bekasi`
     },
     {
       id: 3,
       title: 'Pabrik Medan',
       qrImage: qrCode3,
-      infoQR: `Nama produk: Produk C
-Masa berlaku: 21 Januari 2027
-Nama Pabrik: PT C
+      infoQR: `Nama produk: Produk C <br>
+Masa berlaku: 21 Januari 2027 <br>
+Nama Pabrik: PT C <br>
 Alamat Pabrik: Medan`
     }
   ];
@@ -96,7 +96,14 @@ Alamat Pabrik: Medan`
             onClick={(e) => e.stopPropagation()} // Mencegah modal tertutup saat area dalam diklik
           >
             <h4 className="text-xl font-bold text-gray-900 mb-4">Konten QR Code</h4>
-            <p className="text-gray-700 mb-6 break-words bg-gray-100 p-4 rounded-md">{modalContent}</p>
+            <div className="text-gray-700 mb-6 break-words bg-gray-100 p-4 rounded-md text-left">
+              {modalContent.split('<br>').map((line, index) => (
+                <span key={index}>
+                  {line.trim()}
+                  <br />
+                </span>
+              ))}
+            </div>
             <button
               onClick={() => setModalContent(null)}
               className="bg-gray-900 text-white font-medium py-2 px-8 rounded-lg hover:bg-gray-700 transition duration-150"
