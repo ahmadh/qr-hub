@@ -17,7 +17,7 @@ function App() {
       qrImage: qrCode1,
       infoQR: `Nama produk: Produk A <br>
 Masa berlaku: 23 Januari 2026 <br>
-Nama Pabrik: PT A <br>
+Nama Pabrik: PT X <br>
 Alamat Pabrik: Surabaya`
     },
     {
@@ -26,7 +26,7 @@ Alamat Pabrik: Surabaya`
       qrImage: qrCode2,
       infoQR: `Nama produk: Produk B <br>
 Masa berlaku: 13 Januari 2027 <br>
-Nama Pabrik: PT B <br>
+Nama Pabrik: PT X <br>
 Alamat Pabrik: Bekasi`
     },
     {
@@ -35,7 +35,7 @@ Alamat Pabrik: Bekasi`
       qrImage: qrCode3,
       infoQR: `Nama produk: Produk C <br>
 Masa berlaku: 21 Januari 2027 <br>
-Nama Pabrik: PT C <br>
+Nama Pabrik: PT X <br>
 Alamat Pabrik: Medan`
     }
   ];
