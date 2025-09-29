@@ -1,44 +1,63 @@
 import './App.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import jsqr from 'jsqr';
 
 // 1. Impor gambar QR Code Anda dari folder assets
 // Pastikan Anda sudah menempatkan file gambar QR di folder `src/assets`
 import qrCode1 from './assets/Surabaya.png';
 import qrCode2 from './assets/Bekasi.png';
 import qrCode3 from './assets/Medan.png';
-
-function App() {
-  const [modalContent, setModalContent] = useState(null);
-
-  const qrData = [
+const initialQrData = [
     {
       id: 1,
       title: 'Pabrik Surabaya',
       qrImage: qrCode1,
-      infoQR: `Nama produk: Produk A <br>
-Masa berlaku: 23 Januari 2026 <br>
-Nama Pabrik: PT X <br>
-Alamat Pabrik: Surabaya`
+      infoQR: 'Memuat data QR...' // Teks sementara
     },
     {
       id: 2,
       title: 'Pabrik Bekasi',
       qrImage: qrCode2,
-      infoQR: `Nama produk: Produk B <br>
-Masa berlaku: 13 Januari 2027 <br>
-Nama Pabrik: PT X <br>
-Alamat Pabrik: Bekasi`
+      infoQR: 'Memuat data QR...'
     },
     {
       id: 3,
       title: 'Pabrik Medan',
       qrImage: qrCode3,
-      infoQR: `Nama produk: Produk C <br>
-Masa berlaku: 21 Januari 2027 <br>
-Nama Pabrik: PT X <br>
-Alamat Pabrik: Medan`
+      infoQR: 'Memuat data QR...'
     }
   ];
+
+function App() {
+  const [modalContent, setModalContent] = useState(null);
+  const [qrData, setQrData] = useState(initialQrData);
+
+  useEffect(() => {
+    const decodeQR = (item) => new Promise((resolve) => {
+      const img = new Image();
+      img.src = item.qrImage;
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, img.width, img.height);
+        const imageData = ctx.getImageData(0, 0, img.width, img.height);
+        const code = jsqr(imageData.data, imageData.width, imageData.height);
+        resolve({ ...item, infoQR: code ? code.data : 'Gagal membaca QR Code' });
+      };
+      img.onerror = () => {
+        resolve({ ...item, infoQR: 'Gagal memuat gambar QR' });
+      };
+    });
+
+    const decodeAll = async () => {
+      const decodedData = await Promise.all(initialQrData.map(decodeQR));
+      setQrData(decodedData);
+    };
+
+    decodeAll();
+  }, []);
 
   return (
     
@@ -97,7 +116,7 @@ Alamat Pabrik: Medan`
           >
             <h4 className="text-xl font-bold text-gray-900 mb-4">Konten QR Code</h4>
             <div className="text-gray-700 mb-6 break-words bg-gray-100 p-4 rounded-md text-left">
-              {modalContent.split('<br>').map((line, index) => (
+              {modalContent.split('\n').map((line, index) => (
                 <span key={index}>
                   {line.trim()}
                   <br />
